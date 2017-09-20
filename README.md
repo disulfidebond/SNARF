@@ -5,8 +5,14 @@ SnP Variable Repeat Finder
 
 The purpose of the experiment was to find Variable Number Tandem Repeats (VNTR) from PCR sequences that had been sequenced using Illumina.
 
-First, the reads were downloaded from Galaxy by parsing the webpage for the Galaxy hashed identifier, then using curl to mass download the reads:
+First, the reads were downloaded from Galaxy by parsing the webpage for the Galaxy hashed identifier, then using curl to mass download the reads (see below).
 
+Next, a [perl](https://github.com/disulfidebond/SNARF/blob/master/snarfSeq.pl) script was used as part of a two step process.  First, it grabbed all reads that matched any possible pairs of nucleotides, then filtered for only repeated nucldotides.
+
+Finally, a [python](https://github.com/disulfidebond/SNARF/blob/master/parseData4Excel.py) script formatted the output into an Excel-compatible spreadsheet
+
+
+       # Code to parse Galaxy
        sed -n '/#/{n;p;}' tmpDocParsed_useGalaxy.txt # where '#' is an identifier from a partially-parsed XML file
        
        declare -a CURLARR 
@@ -19,7 +25,3 @@ First, the reads were downloaded from Galaxy by parsing the webpage for the Gala
            let RANDSLEEP=($RANDOM % 3) ; 
            sleep $RANDSLEEP ; 
        done
-
-Next, a [perl](https://github.com/disulfidebond/SNARF/blob/master/snarfSeq.pl) script was used as part of a two step process.  First, it grabbed all reads that matched any possible pairs of nucleotides, then filtered for only repeated nucldotides.
-
-Finally, a [python](https://github.com/disulfidebond/SNARF/blob/master/parseData4Excel.py) script formatted the output into an Excel-compatible spreadsheet
