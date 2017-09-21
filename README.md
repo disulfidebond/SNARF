@@ -3,7 +3,7 @@ SnP Variable Repeat Finder
 
 #### Extended Methods
 
-The purpose of the experiment was to find Variable Number Tandem Repeats (VNTR) from PCR sequences that had been sequenced using Illumina.
+The purpose of the experiment was to find repeats in PCR sequences that had been sequenced using Illumina for further analysis as Variable Number Tandem Repeats (VNTR).
 
 First, the reads were downloaded from Galaxy by parsing the webpage for the Galaxy hashed identifier, then using curl to mass download the reads (see below).
 
